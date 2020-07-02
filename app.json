@@ -1,0 +1,8 @@
+{
+  "name": "Mock Premier League",
+  "description": "Mock Premier League Application",
+  "repository": "https://github.com/Seyi-Baks/MockPremierLeague",
+  "logo": "",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
