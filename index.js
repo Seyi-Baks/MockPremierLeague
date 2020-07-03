@@ -25,9 +25,7 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 
 //API Routes
-app.get('/', (req, res) => {
-  res.send('Hello world');
-});
+app.use(routes);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);
