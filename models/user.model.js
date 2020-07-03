@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const statusCodes = require('../utility/statuscodes');
+const { statusCodes } = require('../utility/statusCodes');
 
 const UserSchema = new mongoose.Schema({
   firstName: {

@@ -1,6 +1,6 @@
 const User = require('../models/user.model');
 const Utility = require('../utility/utility');
-const statusCodes = require('../utility/statusCodes');
+const { statusCodes } = require('../utility/statusCodes');
 
 exports.createUser = async (user) => {
   try {
