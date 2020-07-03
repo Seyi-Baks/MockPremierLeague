@@ -3,17 +3,18 @@ const config = require('dotenv');
 const { json, urlencoded } = require('body-parser');
 const cors = require('cors');
 
-const teams = require('./routes/teams.routes.js');
+const routes = require('./routes/routes.js');
+const connect = require('./config/database');
 
 const app = express();
-
-const { PORT = 5000 } = process.env;
 
 //Load environment variables
 config.config();
 
-//routes
-app.use('/api/v1/teams', teams);
+const { PORT } = process.env;
+
+//Database connection
+connect();
 
 // Enable Cors
 app.use(cors());
@@ -23,10 +24,11 @@ app.use(json());
 
 app.use(urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.status(200).send('<h1>Mock Premier League</h1>');
-});
+//API Routes
+app.use(routes);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);
 });
+
+module.exports = app;
