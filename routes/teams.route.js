@@ -9,11 +9,16 @@ const {
   deleteTeam,
 } = require('../controllers/team.controller');
 
+const {
+  checkTeamCache,
+  checkTeamsCache,
+} = require('../middleware/cache/teamCache.middleware');
+
 const router = express.Router();
 
 router.post('', authMiddleware, permissionMiddleware, createTeam);
-router.get('', authMiddleware, fetchTeams);
-router.get('/:teamId', authMiddleware, fetchTeam);
+router.get('', authMiddleware, checkTeamsCache, fetchTeams);
+router.get('/:teamId', authMiddleware, checkTeamCache, fetchTeam);
 router.put('/:teamId', authMiddleware, permissionMiddleware, updateTeam);
 router.delete('/:teamId', authMiddleware, permissionMiddleware, deleteTeam);
 

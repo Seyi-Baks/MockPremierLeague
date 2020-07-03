@@ -1,5 +1,7 @@
 const FixtureService = require('../services/fixtures.service');
 const response = require('../utils/ResponseHandler');
+const { statusCodes } = require('../utils/StatusCodes');
+const redis_client = require('../config/redis_db');
 
 exports.createFixture = async (req, res) => {
   const fixtureObj = req.body;
@@ -17,7 +19,7 @@ exports.fetchLeagueFixtures = async (req, res) => {
 
   try {
     const fixtures = await FixtureService.fetchFixturesByLeague(leagueId);
-
+    redis_client.setex('leagueFixtures', 3600, JSON.stringify(fixtures));
     return response.sendSuccess(res, 200, fixtures);
   } catch (error) {
     return response.sendError(res, 400, error.message);
@@ -25,9 +27,11 @@ exports.fetchLeagueFixtures = async (req, res) => {
 };
 
 exports.fetchFixtures = async (req, res) => {
-  try {
-    const fixtures = await FixtureService.fetchFixtures();
+  const status = (req.query = 1 ? statusCodes.completed : statusCodes.pending);
 
+  try {
+    const fixtures = await FixtureService.fetchFixtures({ status });
+    redis_client.setex('fixtures', 3600, JSON.stringify(fixtures));
     return response.sendSuccess(res, 200, fixtures);
   } catch (error) {
     return response.sendError(res, 400, error.message);
@@ -50,7 +54,7 @@ exports.fetchFixture = async (req, res) => {
 
   try {
     const fixture = await FixtureService.fetchFixture(fixtureId);
-
+    redis_client.setex(fixtureId, 3600, JSON.stringify(fixtures));
     return response.sendSuccess(res, 200, fixture);
   } catch (error) {
     return response.sendError(res, 400, error.message);

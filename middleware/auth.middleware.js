@@ -12,6 +12,9 @@ decodeToken = (req, res, next, token) => {
 };
 
 const authMiddleware = (req, res, next) => {
+  if (!req.session.token) {
+    return response.sendError(res, 400, 'User needs to be logged in first');
+  }
   let token =
     req.headers['x-access-token'] ||
     req.headers.Authorization ||

@@ -68,6 +68,7 @@ exports.createFixture = async (fixtureDetails) => {
 };
 
 exports.fetchFixturesByLeague = async (leagueId) => {
+  const { APP_URL } = process.env;
   try {
     const fixtures = await Fixture.find({ league: leagueId }).populate([
       {
@@ -82,8 +83,6 @@ exports.fetchFixturesByLeague = async (leagueId) => {
         path: 'league',
       },
     ]);
-
-    console.log('GOT HERE');
 
     return fixtures.map((fixture) => {
       const {
@@ -167,6 +166,7 @@ exports.fetchFixtures = async (fetch) => {
 };
 
 exports.fetchFixture = async (fixtureId) => {
+  const { APP_URL } = process.env;
   try {
     const fixture = await Fixture.findById(fixtureId).populate([
       {
@@ -249,7 +249,7 @@ exports.deleteFixture = async (fixtureID) => {
 };
 
 exports.getTeamFixtures = async (teamCode) => {
-  console.log(teamCode);
+  const { APP_URL } = process.env;
   try {
     const fixtures = await Fixture.find(teamCode).populate([
       {

@@ -4,6 +4,12 @@ const authMiddleware = require('../middleware/auth.middleware');
 const permissionMiddleware = require('../middleware/permission.middleware');
 
 const {
+  checkFixtureCache,
+  checkFixturesCache,
+  checkLeagueFixtures,
+} = require('../middleware/cache/fixtureCache.middleware');
+
+const {
   createFixture,
   fetchLeagueFixtures,
   fetchFixtures,
@@ -17,9 +23,19 @@ const router = express.Router();
 
 router.post('/match', authMiddleware, permissionMiddleware, createFixture);
 router.get('/matches', authMiddleware, fetchFixtures);
-router.get('/:leagueId/matches', authMiddleware, fetchLeagueFixtures);
-router.get('/', fetchFixturesFromUrl);
-router.get('/match/:fixtureId', authMiddleware, fetchFixture);
+router.get(
+  '/:leagueId/matches',
+  authMiddleware,
+  checkLeagueFixtures,
+  fetchLeagueFixtures
+);
+router.get('/', checkFixturesCache, fetchFixturesFromUrl);
+router.get(
+  '/match/:fixtureId',
+  authMiddleware,
+  checkFixtureCache,
+  fetchFixture
+);
 
 router.put(
   '/match/:fixtureId',
