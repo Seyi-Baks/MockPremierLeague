@@ -1,4 +1,8 @@
 const express = require('express');
+
+const authMiddleware = require('../middleware/auth.middleware');
+const permissionMiddleware = require('../middleware/permission.middleware');
+
 const {
   createLeague,
   fetchLeagues,
@@ -10,11 +14,11 @@ const {
 
 const router = express.Router();
 
-router.post('', createLeague);
-router.get('', fetchLeagues);
-router.get('/:leagueId', fetchLeague);
-router.put('/:leagueId', updateLeague);
-router.delete('/:leagueId', deleteLeague);
-router.get('/:leagueId/teams', fetchTeams);
+router.post('', authMiddleware, permissionMiddleware, createLeague);
+router.get('', authMiddleware, fetchLeagues);
+router.get('/:leagueId', authMiddleware, fetchLeague);
+router.put('/:leagueId', authMiddleware, permissionMiddleware, updateLeague);
+router.delete('/:leagueId', authMiddleware, permissionMiddleware, deleteLeague);
+router.get('/:leagueId/teams', authMiddleware, fetchTeams);
 
 module.exports = router;
