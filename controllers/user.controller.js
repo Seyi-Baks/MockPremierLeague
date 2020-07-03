@@ -6,7 +6,6 @@ exports.userSignUp = async (req, res) => {
 
   try {
     const createdUser = await UserService.createUser(newUserObj);
-
     return response.sendSuccess(res, 201, createdUser);
   } catch (error) {
     return response.sendError(res, 400, error.message);

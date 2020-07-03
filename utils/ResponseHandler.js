@@ -6,7 +6,6 @@ exports.sendSuccess = (res, statusCode, data) => {
 
   return res.status(statusCode).json(response);
 };
-
 exports.sendError = (res, statusCode, message) => {
   const response = {
     success: false,
