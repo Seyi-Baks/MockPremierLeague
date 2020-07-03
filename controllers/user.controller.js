@@ -23,4 +23,26 @@ exports.userLogin = async (req, res) => {
   }
 };
 
-exports.userLogout = async (req, res) => {};
+exports.userLogout = async (req, res) => {
+  try {
+    if (!req.session.token) {
+      return response.sendError(
+        res,
+        400,
+        'There is not current user logged in'
+      );
+    }
+    req.session.destroy((err) => {
+      if (err) {
+        return response.sendError(
+          res,
+          400,
+          'Currently experiencing issues logging user out'
+        );
+      }
+    });
+    return response.sendSuccess(res, 200, 'User logged out');
+  } catch (error) {
+    return response.sendError(res, 400, error.message);
+  }
+};

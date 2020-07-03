@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 const UserRoute = require('./user.routes');
 const TeamRoute = require('./teams.route');
@@ -14,7 +15,7 @@ app.use(`${API_VERSION}/leagues`, LeagueRoute);
 app.use(`${API_VERSION}/fixtures`, FixtureRoute);
 
 app.get('/', (req, res) => {
-  res.status(200).send('<h1>Mock Premier League</h1>');
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 module.exports = app;
