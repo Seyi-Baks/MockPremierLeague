@@ -6,12 +6,10 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const redis_client = require('./config/redis_db');
 const session = require('express-session');
-const connectRedis = require('connect-redis')(session);
+const connectRedis = require('connect-redis');
 
 const routes = require('./routes/routes.js');
 const connect = require('./config/database');
-
-const RedisClient = redis.createClient(6379, process.env.REDIS_SERVER);
 
 const app = express();
 
@@ -20,21 +18,29 @@ config.config();
 
 const {
   PORT = 5000,
-  SESSION_LIFETIME = 1000 * 60 * 60,
   NODE_ENV,
+  SESSION_LIFETIME = 1000 * 60 * 60,
+  COOKIE_SECRET = 'cookiesecret',
 } = process.env;
+const RedisStore = connectRedis(session);
 
 //Database connection
 connect();
 
+// Redis
+redis_client.on('connect', (err, response) => {
+  'use strict';
+  console.log('Connected to Redis database');
+});
+
 //Session
 app.use(
   session({
-    store: new connectRedis({ client: RedisClient, ttl: 260 }),
+    store: new RedisStore({ client: redis_client }),
     name: 'sid',
     resave: false,
     saveUninitialized: false,
-    secret: 'mysecret',
+    secret: COOKIE_SECRET,
     cookie: {
       maxAge: SESSION_LIFETIME,
       sameSite: true,
@@ -42,14 +48,6 @@ app.use(
     },
   })
 );
-
-RedisClient.on('error', (err) => {
-  console.log('ERROR ', err);
-});
-
-RedisClient.on('ready', () => {
-  console.log('Redis is ready');
-});
 
 // Enable Cors
 app.use(cors());
