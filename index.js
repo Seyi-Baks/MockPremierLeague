@@ -11,7 +11,7 @@ const app = express();
 //Load environment variables
 config.config();
 
-const { PORT } = process.env;
+const { PORT = 5000 } = process.env;
 
 //Database connection
 connect();
