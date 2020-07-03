@@ -3,12 +3,17 @@ const config = require('dotenv');
 const { json, urlencoded } = require('body-parser');
 const cors = require('cors');
 
+const teams = require('./routes/teams.routes.js');
+
 const app = express();
 
 const { PORT = 5000 } = process.env;
 
 //Load environment variables
 config.config();
+
+//routes
+app.use('/api/v1/teams', teams);
 
 // Enable Cors
 app.use(cors());
@@ -23,5 +28,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log('App listening on port 3000!');
+  console.log(`App listening on port ${PORT}!`);
 });
