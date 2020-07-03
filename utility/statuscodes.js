@@ -1,4 +1,4 @@
-module.exports = {
+const statusCodes = {
   success: 200,
   created: 201,
   noContent: 204,
@@ -27,3 +27,5 @@ module.exports = {
   deleted: 'DELETED',
   completed: 'COMPLETED',
 };
+
+module.exports = statusCodes;
