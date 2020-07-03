@@ -1,5 +1,5 @@
 const UserService = require('../services/users.service');
-const response = require('../utility/ResponseHandler');
+const response = require('../utils/ResponseHandler');
 
 exports.userSignUp = async (req, res) => {
   const newUserObj = req.body;
