@@ -1,9 +1,10 @@
 const Fixture = require('../models/fixtures.model');
 const Team = require('../models/teams.model');
-const statusCodes = require('../utils/StatusCodes');
+const { statusCodes } = require('../utils/StatusCodes');
 
 exports.createFixture = async (fixtureDetails) => {
   const { APP_URL } = process.env;
+
   try {
     const fixture = await Fixture.findOne({
       home_team: fixtureDetails.home_team,

@@ -37,17 +37,51 @@ exports.checkFixturesCache = (req, res, next) => {
 };
 
 exports.checkLeagueFixtures = (req, res, next) => {
-  redis_client.get('leagueFixtures', (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(err);
-    }
-    //if no match found
-    if (data != null) {
-      return response.sendSuccess(res, 200, JSON.parse(data));
-    } else {
-      //proceed to next middleware function
-      next();
-    }
-  });
+  switch (req.query) {
+    case 0:
+      redis_client.get('penDixtures', (err, data) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send(err);
+        }
+        //if no match found
+        if (data != null) {
+          return response.sendSuccess(res, 200, JSON.parse(data));
+        } else {
+          //proceed to next middleware function
+          next();
+        }
+      });
+      break;
+    case 1:
+      redis_client.get('complFixtures', (err, data) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send(err);
+        }
+        //if no match found
+        if (data != null) {
+          return response.sendSuccess(res, 200, JSON.parse(data));
+        } else {
+          //proceed to next middleware function
+          next();
+        }
+      });
+      break;
+    default:
+      redis_client.get('allFixtures', (err, data) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send(err);
+        }
+        //if no match found
+        if (data != null) {
+          return response.sendSuccess(res, 200, JSON.parse(data));
+        } else {
+          //proceed to next middleware function
+          next();
+        }
+      });
+      break;
+  }
 };

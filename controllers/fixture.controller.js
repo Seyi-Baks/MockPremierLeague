@@ -31,7 +31,14 @@ exports.fetchFixtures = async (req, res) => {
 
   try {
     const fixtures = await FixtureService.fetchFixtures({ status });
-    redis_client.setex('fixtures', 600, JSON.stringify(fixtures));
+    if ((req.query = 1)) {
+      redis_client.setex('complFixtures', 600, JSON.stringify(fixtures));
+    } else if ((req.query = 0)) {
+      redis_client.setex('penDixtures', 600, JSON.stringify(fixtures));
+    } else {
+      redis_client.setex('allFixtures', 600, JSON.stringify(fixtures));
+    }
+
     return response.sendSuccess(res, 200, fixtures);
   } catch (error) {
     return response.sendError(res, 400, error.message);
