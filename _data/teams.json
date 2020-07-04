@@ -1,0 +1,142 @@
+[
+  {
+    "key": "astonvilla",
+    "name": "Aston Villa FC",
+    "code": "AVL",
+    "stadium": "Villa Park",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "liverpool",
+    "name": "Liverpool FC",
+    "code": "LIV",
+    "stadium": "Anfield",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "mancity",
+    "name": "Manchester City FC",
+    "code": "MCI",
+    "stadium": "Etihad Stadium",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "everton",
+    "name": "Everton FC",
+    "code": "EVE",
+    "stadium": "Goodison Park",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "chelsea",
+    "name": "Chelsea FC",
+    "code": "CHE",
+    "stadium": "Stamford Bridge",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "arsenal",
+    "name": "Arsenal FC",
+    "code": "ARS",
+    "stadium": "Emirates Stadium",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "manutd",
+    "name": "Manchester United FC",
+    "code": "MUN",
+    "stadium": "Old Trafford",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "newcastle",
+    "name": "Newcastle United FC",
+    "code": "NEW",
+    "stadium": "St. James Park",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "tottenham",
+    "name": "Tottenham Hotspur FC",
+    "code": "TOT",
+    "stadium": "White Hart Lane",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "westham",
+    "name": "West Ham United FC",
+    "code": "WHU",
+    "stadium": "London Stadium",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "wolves",
+    "name": "Wolverhampton Wanderers FC",
+    "code": "WOL",
+    "stadium": "Molineux Stadium",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "burnley",
+    "name": "Burnley FC",
+    "code": "BUR",
+    "stadium": "Turf Moor",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "crystalpalace",
+    "name": "Crystal Palace FC",
+    "code": "CRY",
+    "stadium": "Selhurst Park Stadium",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "leicester",
+    "name": "Leicester City FC",
+    "code": "LEI",
+    "stadium": "King Power Stadium",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "norwich",
+    "name": "Norwich City FC",
+    "code": "NOR",
+    "stadium": "Carrow Road Stadium",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "watford",
+    "name": "Watford FC",
+    "code": "WAT",
+    "stadium": "Vicarage Road",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "sheffieldunitedfc",
+    "name": "Sheffield United FC",
+    "code": "SHU",
+    "stadium": "Bramall Lane",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "bournemouth",
+    "name": "AFC Bournemouth",
+    "code": "BOU",
+    "stadium": "Stamford Bridge",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "brightonhovealbionfc",
+    "name": "Brighton & Hove Albion FC",
+    "code": "BHA",
+    "stadium": "Vitality Stadium",
+    "league": "5eff407ff24ade17c68f4f63"
+  },
+  {
+    "key": "southampton",
+    "name": "Southampton FC",
+    "code": "SOU",
+    "stadium": "St Mary's Stadium",
+    "league": "5eff407ff24ade17c68f4f63"
+  }
+]

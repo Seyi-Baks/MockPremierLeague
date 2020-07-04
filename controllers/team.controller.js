@@ -13,8 +13,6 @@ exports.createTeam = async (req, res) => {
 };
 
 exports.fetchTeams = async (req, res) => {
-  const { search } = req.query;
-
   try {
     const teams = await TeamService.fetchTeams();
     redis_client.setex('teams', 600, JSON.stringify(teams));
