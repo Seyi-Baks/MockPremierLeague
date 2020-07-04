@@ -43,7 +43,6 @@ app.use(
     secret: COOKIE_SECRET,
     cookie: {
       maxAge: SESSION_LIFETIME,
-      sameSite: true,
       secure: false,
     },
   })
