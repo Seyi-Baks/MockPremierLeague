@@ -44,7 +44,7 @@ app.use(
     cookie: {
       maxAge: SESSION_LIFETIME,
       sameSite: true,
-      secure: NODE_ENV === 'production',
+      secure: false,
     },
   })
 );
