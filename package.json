@@ -9,7 +9,7 @@
   "scripts": {
     "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development nodemon index.js",
-    "test": ""
+    "test": "NODE_ENV=test jest --forceExit --detectOpenHandles"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -28,7 +28,10 @@
   },
   "devDependencies": {
     "got": "^11.3.0",
+    "jest": "^26.1.0",
+    "mongodb-memory-server": "^6.6.1",
     "nodemon": "^2.0.4",
+    "supertest": "^4.0.2",
     "tape": "^4.7.0"
   },
   "repository": {
