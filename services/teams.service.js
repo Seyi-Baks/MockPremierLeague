@@ -15,11 +15,9 @@ exports.createTeam = async (team) => {
   }
 };
 
-exports.fetchTeams = async (search) => {
+exports.fetchTeams = async () => {
   try {
-    const teams = await Team.find(
-      search ? { $text: { $search: search } } : null
-    )
+    const teams = await Team.find()
       .sort({ name: 1 })
       .populate([
         {
