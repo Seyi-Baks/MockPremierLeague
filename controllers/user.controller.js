@@ -16,7 +16,7 @@ exports.userLogin = async (req, res) => {
   const userDetails = req.body;
   try {
     const token = await UserService.loginUser(userDetails);
-
+    req.session.token = token.token;
     return response.sendSuccess(res, 200, token);
   } catch (error) {
     return response.sendError(res, 400, error.message);
